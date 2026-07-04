@@ -182,7 +182,7 @@ body{
     <div class="cover-card">
       <span class="sticker">6 friends showed up</span>
       <p class="disp" style="font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--marigold-deep);margin-bottom:14px">happy birthday</p>
-      <p class="disp headline" style="color:var(--marigold-deep)">Ananya.</p>
+      <p class="disp headline" id="nameCover" style="color:var(--marigold-deep)">Ananya.</p>
       <p style="margin-top:20px;font-size:14px;color:var(--ink-soft);font-style:italic">brace yourself.</p>
     </div>
     <div class="tap-hint" style="color:var(--marigold-deep)"><span>tap to open ↓</span></div>
@@ -218,7 +218,7 @@ body{
 
   <div class="scene" data-bg="var(--rose-paper)" data-tap="1" data-confetti="1">
     <p class="eyebrow" style="color:var(--rose-deep)">okay, real talk —</p>
-    <p class="sweet sweet-line" style="color:var(--rose-deep);max-width:340px">You make every room lighter. We'd all be a little lost without you. Happy birthday, Ananya.</p>
+    <p class="sweet sweet-line" style="color:var(--rose-deep);max-width:340px">You make every room lighter. We'd all be a little lost without you. Happy birthday, <span id="nameSweet">Ananya</span>.</p>
     <p style="margin-top:26px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-deep);opacity:.8">— from the whole squad</p>
     <div class="tap-hint" style="color:var(--rose-deep)"><span>one more thing ↓</span></div>
   </div>
@@ -250,6 +250,14 @@ body{
 </div>
 
 <script>
+const qp = new URLSearchParams(location.search);
+const rawName = qp.get('to') || 'Ananya';
+const toName = rawName.replace(/[^\p{L}\p{N} .'-]/gu, '').trim().slice(0, 20) || 'Ananya';
+const pretty = toName.charAt(0).toUpperCase() + toName.slice(1);
+document.getElementById('nameCover').textContent = pretty + '.';
+document.getElementById('nameSweet').textContent = pretty;
+document.title = pretty + ', you got a card 💌 — softlaunch*';
+
 const scenes = [...document.querySelectorAll('.scene')];
 const stage = document.getElementById('stage');
 const dotsEl = document.getElementById('dots');
