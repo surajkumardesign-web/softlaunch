@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>you got a card 💌 — softlaunch*</title>
+<meta property="og:title" content="you got a card 💌">
+<meta property="og:description" content="someone made this for you. open it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overscroll-behavior:none}
+body{font-family:'Instrument Sans',sans-serif;background:#1a0f1e;overflow:hidden;position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#241629}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.3;mix-blend-mode:multiply}
+.stage{width:100%;max-width:440px;height:100dvh;max-height:820px;position:relative;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.5);transition:background .4s}
+@media (min-width:441px){.stage{border-radius:32px;height:min(820px,calc(100dvh - 40px));margin:20px}}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 32px 90px;text-align:center;opacity:0;pointer-events:none;transition:opacity .45s ease}
+.scene.on{opacity:1;pointer-events:auto}
+.disp{font-family:'Bricolage Grotesque',sans-serif;line-height:1.12;letter-spacing:-.02em;font-weight:800}
+.sweet{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+.eyebrow{font-family:'Fraunces',serif;font-style:italic;font-size:16px;margin-bottom:16px;opacity:.85}
+.pill{display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:22px;border:2px solid #241629}
+.tap-hint{position:absolute;bottom:30px;left:0;right:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.55}
+.tap-hint span{display:inline-block;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.5;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.btn{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;background:#241629;color:#FBF4EA;padding:14px 26px;border-radius:999px;border:2px solid #241629;cursor:pointer;text-decoration:none;display:inline-block;margin-top:26px;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.wm{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:11px;opacity:.55;letter-spacing:.06em}
+.confetti-piece{position:absolute;top:-30px;border-radius:1px;pointer-events:none}
+@keyframes fall{0%{transform:translateY(-30px) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
+</style>
+</head>
+<body>
+<svg class="grain" aria-hidden="true"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.11"/></feComponentTransfer></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+
+<div class="stage" id="stage">
+  <div class="scene on" id="s1">
+    <p class="eyebrow" id="e1">someone made this for you</p>
+    <p class="disp" id="coverName" style="font-size:clamp(34px,9vw,48px)">Bestie.</p>
+    <p style="margin-top:18px;font-size:14px;opacity:.7;font-style:italic">it's small. it's free. it's from the heart. mostly.</p>
+    <div class="tap-hint"><span>tap to open ↓</span></div>
+  </div>
+
+  <div class="scene" id="s2">
+    <span class="pill" id="fromPill">from someone</span>
+    <p class="disp" id="msgLine" style="font-size:clamp(24px,6vw,31px);font-weight:700;max-width:340px"></p>
+    <div class="tap-hint"><span>one more ↓</span></div>
+  </div>
+
+  <div class="scene" id="s3">
+    <p class="eyebrow">that's it. that's the card.</p>
+    <p class="sweet" id="endLine" style="font-size:clamp(24px,6vw,30px);max-width:320px">Now go tell them something nice in person, coward. 💌</p>
+    <a class="btn" href="/">Make one for your bestie — free</a>
+    <p class="wm">made free on softlaunch* · full cards from ₹49</p>
+  </div>
+</div>
+
+<script>
+const qp = new URLSearchParams(location.search);
+const clean = (s, n) => (s||'').replace(/[<>]/g,'').trim().slice(0, n);
+const to = clean(qp.get('to'), 20) || 'Bestie';
+const from = clean(qp.get('from'), 20) || 'someone';
+const msg = clean(qp.get('m'), 140) || "You're getting a card because words are hard. Happy everything.";
+const v = Math.min(3, Math.max(0, parseInt(qp.get('v'))||0));
+
+const vibes = [
+  {bg:'#FCEDD3', deep:'#7a4c08', pill:'#F2A93B'},
+  {bg:'#FCE3EE', deep:'#8f1f4c', pill:'#E84D8A'},
+  {bg:'#DCF3E9', deep:'#0e4f38', pill:'#5BC49A'},
+  {bg:'#EDE6FA', deep:'#3f2d6e', pill:'#B9A7E6'}
+];
+const vb = vibes[v];
+const stage = document.getElementById('stage');
+stage.style.background = vb.bg;
+document.body.style.background = '#1a0f1e';
+['e1','coverName','msgLine','endLine'].forEach(id=>document.getElementById(id).style.color = vb.deep);
+const pretty = to.charAt(0).toUpperCase()+to.slice(1);
+document.getElementById('coverName').textContent = pretty + '.';
+document.getElementById('fromPill').textContent = 'from ' + from;
+document.getElementById('fromPill').style.background = vb.pill;
+document.getElementById('msgLine').textContent = msg;
+document.title = pretty + ', you got a card 💌';
+
+const scenes = ['s1','s2','s3'].map(id=>document.getElementById(id));
+let i = 0;
+stage.addEventListener('click', e=>{
+  if(e.target.closest('a,button')) return;
+  if(i >= scenes.length-1) return;
+  scenes[i].classList.remove('on');
+  i++;
+  scenes[i].classList.add('on');
+  if(i === scenes.length-1) confetti();
+});
+function confetti(){
+  const colors = ['#E84D8A','#F2A93B','#5BC49A','#B9A7E6','#F0997B'];
+  for(let k=0;k<40;k++){
+    const c = document.createElement('div');
+    c.className = 'confetti-piece';
+    const sz = 6+Math.random()*7;
+    c.style.cssText = 'left:'+(Math.random()*100)+'%;width:'+sz+'px;height:'+(sz*.55)+'px;background:'+colors[k%5]+';animation:fall '+(2.4+Math.random()*2)+'s linear '+(Math.random()*.9)+'s forwards';
+    stage.appendChild(c);
+    setTimeout(()=>c.remove(), 5500);
+  }
+}
+</script>
+</body>
+</html>
