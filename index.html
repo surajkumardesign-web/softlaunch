@@ -117,6 +117,21 @@ section{padding:84px 0}
 .pricing h2 em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--rose)}
 .pricing p{color:var(--ink-soft);margin:18px auto 34px;max-width:54ch}
 
+.maker{max-width:540px;margin:0 auto;border:2px solid var(--ink);border-radius:22px;padding:34px 30px;background:#fff;box-shadow:8px 8px 0 var(--ink)}
+.maker label{display:block;text-align:left;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
+.maker input,.maker textarea{display:block;width:100%;margin-top:7px;font-family:'Instrument Sans',sans-serif;font-size:16px;padding:13px 15px;border:2px solid var(--ink);border-radius:12px;background:var(--paper);color:var(--ink);resize:none;box-sizing:border-box}
+.maker input:focus,.maker textarea:focus{outline:3px solid var(--marigold)}
+.mrow{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:4px 0 18px}
+.steal{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;border:2px solid var(--ink);background:var(--marigold-paper);cursor:pointer;transition:transform .12s}
+.steal:active{transform:scale(.96)}
+.vibes{display:flex;gap:8px}
+.vibe{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);cursor:pointer;opacity:.55;transition:all .15s}
+.vibe.on{opacity:1;transform:scale(1.18);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ink)}
+.linkbox{margin-top:20px;padding:16px;border:2px dashed var(--ink);border-radius:14px;background:var(--mint-paper)}
+.linkbox input{width:100%;font-size:13.5px;padding:10px 12px;border:2px solid var(--ink);border-radius:10px;background:#fff;font-family:monospace;box-sizing:border-box}
+.linkrow{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center}
+.linkrow .btn{font-size:14px;padding:11px 20px}
+
 footer{border-top:2px solid var(--ink);padding:36px 0;font-size:14.5px;color:var(--ink-soft)}
 .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
@@ -245,6 +260,43 @@ footer{border-top:2px solid var(--ink);padding:36px 0;font-size:14.5px;color:var
     </div>
   </section>
 
+  <section id="try">
+    <div class="sec-head center">
+      <span class="k">Try it right now</span>
+      <h2>Make a free mini-card in 20 seconds.</h2>
+      <p>No signup. No payment. Type, get a link, drop it in their DMs. It carries our little watermark — that's the deal.</p>
+    </div>
+    <div class="maker">
+      <label>Their name
+        <input id="fTo" maxlength="20" placeholder="Riya">
+      </label>
+      <label>Your name
+        <input id="fFrom" maxlength="20" placeholder="you, obviously">
+      </label>
+      <label>Your line
+        <textarea id="fMsg" rows="3" maxlength="140" placeholder="Write a roast, a soft one, or steal ours…"></textarea>
+      </label>
+      <div class="mrow">
+        <button class="steal" id="stealBtn" type="button">steal a line 🎲</button>
+        <div class="vibes" id="vibes" title="pick a vibe">
+          <div class="vibe on" data-v="0" style="background:var(--marigold)"></div>
+          <div class="vibe" data-v="1" style="background:var(--rose)"></div>
+          <div class="vibe" data-v="2" style="background:var(--mint)"></div>
+          <div class="vibe" data-v="3" style="background:#B9A7E6"></div>
+        </div>
+      </div>
+      <button class="btn" id="makeBtn" type="button" style="width:100%">Create my free card →</button>
+      <div class="linkbox" id="linkBox" hidden>
+        <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;margin-bottom:10px">Their card is live. Send it:</p>
+        <input id="linkOut" readonly>
+        <div class="linkrow">
+          <button class="btn" id="copyBtn" type="button">Copy link</button>
+          <a class="btn ghost" id="waBtn" target="_blank" rel="noopener">Send on WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="plans">
     <div class="sec-head center">
       <span class="k">Pricing</span>
@@ -343,6 +395,43 @@ document.querySelectorAll('.chip').forEach(ch=>{
     ch.classList.add('on');
     document.getElementById('spiceLine').textContent = spiceLines[+ch.dataset.l];
   });
+const stealLines = [
+  "Happy birthday to someone who still replies \"lol\" with a completely straight face.",
+  "Another year wiser? Bold assumption.",
+  "Your camera roll is 3,000 screenshots and 4 real photos. Get help.",
+  "You've been 'about to start gym' for three birthdays now.",
+  "Half my personality is stolen from you and you can't do anything about it.",
+  "No jokes for this one: you make my life so much lighter. Don't go anywhere."
+];
+let stealI = 0, vibeV = 0;
+document.getElementById('stealBtn').addEventListener('click', ()=>{
+  document.getElementById('fMsg').value = stealLines[stealI % stealLines.length];
+  stealI++;
+});
+document.querySelectorAll('.vibe').forEach(v=>{
+  v.addEventListener('click', ()=>{
+    document.querySelectorAll('.vibe').forEach(x=>x.classList.remove('on'));
+    v.classList.add('on');
+    vibeV = +v.dataset.v;
+  });
+});
+document.getElementById('makeBtn').addEventListener('click', ()=>{
+  const to = document.getElementById('fTo').value.trim() || 'Bestie';
+  const from = document.getElementById('fFrom').value.trim() || 'someone';
+  const m = document.getElementById('fMsg').value.trim() || stealLines[0];
+  const url = location.origin + '/mini/?to=' + encodeURIComponent(to) + '&from=' + encodeURIComponent(from) + '&m=' + encodeURIComponent(m) + '&v=' + vibeV;
+  document.getElementById('linkOut').value = url;
+  document.getElementById('waBtn').href = 'https://wa.me/?text=' + encodeURIComponent('you got a card 💌 ' + url);
+  document.getElementById('linkBox').hidden = false;
+  document.getElementById('linkOut').scrollIntoView({behavior:'smooth', block:'center'});
+});
+document.getElementById('copyBtn').addEventListener('click', ()=>{
+  const out = document.getElementById('linkOut');
+  out.select();
+  navigator.clipboard.writeText(out.value).then(()=>{
+    document.getElementById('copyBtn').textContent = 'Copied ✓';
+    setTimeout(()=>document.getElementById('copyBtn').textContent = 'Copy link', 1800);
+  }).catch(()=>{ document.execCommand('copy'); });
 });
 </script>
 </body>
