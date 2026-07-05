@@ -2,437 +2,108 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Softlaunch — your whole friend group, one unforgettable card</title>
-<meta name="description" content="The group card that doesn't look like HR sent it. Your whole squad adds roasts and memories, we turn it into one cinematic card. From ₹99.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>you got a card 💌 — softlaunch*</title>
+<meta property="og:title" content="you got a card 💌">
+<meta property="og:description" content="someone made this for you. open it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --paper:#FBF4EA; --ink:#241629; --ink-soft:#4d3a52;
-  --rose:#E84D8A; --rose-deep:#8f1f4c; --rose-paper:#FCE3EE;
-  --marigold:#F2A93B; --marigold-deep:#7a4c08; --marigold-paper:#FCEDD3;
-  --mint:#5BC49A; --mint-deep:#0e4f38; --mint-paper:#DCF3E9;
-  --lilac-paper:#EDE6FA; --lilac-deep:#3f2d6e;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Instrument Sans',sans-serif;background:var(--paper);color:var(--ink);font-size:17px;line-height:1.65;overflow-x:hidden}
-.grain{position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.35;mix-blend-mode:multiply}
-h1,h2,h3,.disp{font-family:'Bricolage Grotesque',sans-serif;line-height:1.05;letter-spacing:-.02em}
-.sweetf{font-family:'Fraunces',serif;font-style:italic;font-weight:400}
-.wrap{max-width:1100px;margin:0 auto;padding:0 24px}
-a{color:inherit}
-.announce{background:var(--rose);color:#fff;text-align:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;padding:10px 18px}
-.announce em{font-family:'Fraunces',serif;font-style:italic}
-nav{display:flex;justify-content:space-between;align-items:center;padding:22px 0;position:relative;z-index:5}
-.logo{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:22px;text-decoration:none;letter-spacing:-.03em}
-.logo span{color:var(--rose)}
-.btn{display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:16px;background:var(--ink);color:var(--paper);text-decoration:none;padding:13px 26px;border-radius:999px;border:2px solid var(--ink);transition:transform .15s ease,background .15s ease;cursor:pointer}
-.btn:hover{transform:translateY(-2px) rotate(-1deg);background:var(--rose);border-color:var(--rose);color:#fff}
-.btn.ghost{background:transparent;color:var(--ink)}
-.btn.ghost:hover{background:var(--ink);color:var(--paper)}
-
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:52px 0 84px}
-.eyebrow{display:inline-block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--lilac-paper);color:var(--lilac-deep);padding:7px 16px;border-radius:999px;margin-bottom:22px;transform:rotate(-1.5deg)}
-h1{font-size:clamp(40px,6.4vw,68px);font-weight:800}
-h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--rose)}
-.hero p.sub{font-size:19px;color:var(--ink-soft);margin:22px 0 30px;max-width:46ch}
-.hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.price-note{font-size:14px;color:var(--ink-soft)}
-
-.hero-card-zone{display:flex;justify-content:center}
-.hero-card{width:310px;height:430px;border-radius:22px;cursor:pointer;-webkit-user-select:none;user-select:none;background:var(--marigold-paper);border:2px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:34px 26px;transform:rotate(2.5deg);transition:transform .2s ease,background .3s ease;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.hero-card:hover{transform:rotate(1deg) translateY(-4px)}
-.sticker{position:absolute;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;padding:8px 16px;border-radius:999px;border:2px solid var(--ink);background:var(--mint);transform:rotate(-8deg);top:-10px;right:5%;z-index:2}
-.hc-tag{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:999px;background:var(--marigold);color:var(--ink);margin-bottom:18px;display:inline-block}
-.hc-line{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:23px;line-height:1.28;color:var(--marigold-deep)}
-.hc-hint{position:absolute;bottom:20px;left:0;right:0;font-size:13px;color:var(--ink-soft);opacity:.75}
-.vrow{display:flex;justify-content:space-between;align-items:center;width:100%;padding:11px 14px;border:2px solid var(--ink);border-radius:12px;background:#fff;margin-top:10px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15.5px}
-.vrow .sc{background:var(--marigold);padding:2px 10px;border-radius:999px;font-size:14px}
-.vrow.gold{background:var(--marigold-paper)}
-
-.marquee{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);color:var(--paper);overflow:hidden;white-space:nowrap;padding:12px 0}
-.marquee-track{display:inline-block;animation:scroll 24s linear infinite;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;letter-spacing:.06em}
-.marquee-track em{font-family:'Fraunces',serif;font-style:italic;color:var(--marigold)}
-@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-section{padding:84px 0}
-.sec-head{max-width:660px;margin-bottom:50px}
-.sec-head.center{text-align:center;margin-left:auto;margin-right:auto}
-.sec-head .k{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);display:block;margin-bottom:12px}
-.sec-head h2{font-size:clamp(30px,4.4vw,46px);font-weight:800}
-.sec-head p{color:var(--ink-soft);margin-top:14px;font-size:18px}
-
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-.step{border:2px solid var(--ink);border-radius:22px;padding:30px 26px;position:relative}
-.step.s1{background:var(--rose-paper)}
-.step.s2{background:var(--mint-paper)}
-.step.s3{background:var(--lilac-paper)}
-.step .who{font-family:'Fraunces',serif;font-style:italic;font-size:17px;margin-bottom:10px}
-.step.s1 .who{color:var(--rose-deep)}
-.step.s2 .who{color:var(--mint-deep)}
-.step.s3 .who{color:var(--lilac-deep)}
-.step h3{font-size:22px;font-weight:800;margin-bottom:10px}
-.step.s1 h3{color:var(--rose-deep)}
-.step.s2 h3{color:var(--mint-deep)}
-.step.s3 h3{color:var(--lilac-deep)}
-.step p{font-size:15.5px;color:var(--ink-soft)}
-
-.spice{background:var(--marigold-paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
-.spice-box{max-width:560px;margin:0 auto;background:var(--paper);border:2px solid var(--ink);border-radius:22px;box-shadow:8px 8px 0 var(--ink);padding:40px 34px;text-align:center}
-.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
-.chip{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;padding:10px 22px;border-radius:999px;border:2px solid var(--ink);background:#fff;cursor:pointer;transition:transform .15s}
-.chip:hover{transform:translateY(-2px)}
-.chip.on{background:var(--ink);color:var(--paper)}
-.spice-line{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:23px;line-height:1.3;color:var(--marigold-deep);min-height:90px;display:flex;align-items:center;justify-content:center}
-.spice-note{font-size:14px;color:var(--ink-soft);margin-top:18px}
-
-.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
-.fcard{border:2px solid var(--ink);border-radius:22px;padding:30px 28px;transition:transform .18s ease,box-shadow .18s ease}
-.fcard:hover{transform:translateY(-5px) rotate(-.5deg);box-shadow:8px 8px 0 var(--ink)}
-.fcard .fico{font-size:32px;line-height:1}
-.fcard h3{font-size:23px;font-weight:800;margin:14px 0 8px}
-.fcard p{font-size:15.5px;color:var(--ink-soft)}
-.fcard.f1{background:var(--marigold-paper)} .fcard.f1 h3{color:var(--marigold-deep)}
-.fcard.f2{background:var(--rose-paper)} .fcard.f2 h3{color:var(--rose-deep)}
-.fcard.f3{background:var(--lilac-paper)} .fcard.f3 h3{color:var(--lilac-deep)}
-.fcard.f4{background:var(--mint-paper)} .fcard.f4 h3{color:var(--mint-deep)}
-
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;max-width:980px;margin:0 auto}
-.plan{border:2px solid var(--ink);border-radius:22px;padding:32px 28px;background:var(--paper);position:relative}
-.plan.featured{background:var(--rose-paper);box-shadow:8px 8px 0 var(--ink)}
-.badge{position:absolute;top:-14px;right:20px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:12.5px;background:var(--ink);color:var(--paper);padding:6px 14px;border-radius:999px;transform:rotate(3deg)}
-.plan h3{font-size:23px;font-weight:800}
-.plan .pp{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;margin:8px 0 16px}
-.plan .pp s{opacity:.4;font-size:19px;font-weight:600;margin-right:8px}
-.plan .pp small{font-size:13.5px;font-weight:600;color:var(--ink-soft)}
-.plan ul{list-style:none;margin-top:4px}
-.plan li{padding:9px 0;border-top:1.5px dashed rgba(36,22,41,.22);font-size:15px;color:var(--ink-soft)}
-.plan li strong{color:var(--ink)}
-
-.pricing{text-align:center}
-.pricing h2{font-size:clamp(30px,4vw,44px);font-weight:800;max-width:20ch;margin:0 auto}
-.pricing h2 em{font-family:'Fraunces',serif;font-style:italic;font-weight:500;color:var(--rose)}
-.pricing p{color:var(--ink-soft);margin:18px auto 34px;max-width:54ch}
-
-.maker{max-width:540px;margin:0 auto;border:2px solid var(--ink);border-radius:22px;padding:34px 30px;background:#fff;box-shadow:8px 8px 0 var(--ink)}
-.maker label{display:block;text-align:left;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:16px}
-.maker input,.maker textarea{display:block;width:100%;margin-top:7px;font-family:'Instrument Sans',sans-serif;font-size:16px;padding:13px 15px;border:2px solid var(--ink);border-radius:12px;background:var(--paper);color:var(--ink);resize:none;box-sizing:border-box}
-.maker input:focus,.maker textarea:focus{outline:3px solid var(--marigold)}
-.mrow{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:4px 0 18px}
-.steal{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;padding:9px 18px;border-radius:999px;border:2px solid var(--ink);background:var(--marigold-paper);cursor:pointer;transition:transform .12s}
-.steal:active{transform:scale(.96)}
-.vibes{display:flex;gap:8px}
-.vibe{width:30px;height:30px;border-radius:50%;border:2px solid var(--ink);cursor:pointer;opacity:.55;transition:all .15s}
-.vibe.on{opacity:1;transform:scale(1.18);box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ink)}
-.linkbox{margin-top:20px;padding:16px;border:2px dashed var(--ink);border-radius:14px;background:var(--mint-paper)}
-.linkbox input{width:100%;font-size:13.5px;padding:10px 12px;border:2px solid var(--ink);border-radius:10px;background:#fff;font-family:monospace;box-sizing:border-box}
-.linkrow{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;justify-content:center}
-.linkrow .btn{font-size:14px;padding:11px 20px}
-
-footer{border-top:2px solid var(--ink);padding:36px 0;font-size:14.5px;color:var(--ink-soft)}
-.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-
-@media (max-width:840px){
-  .hero{grid-template-columns:1fr;padding:34px 0 60px;gap:38px}
-  .hero-card-zone{order:-1}
-  .steps,.feat,.plans{grid-template-columns:1fr}
-  section{padding:62px 0}
-}
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
-  html{scroll-behavior:auto}
-}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overscroll-behavior:none}
+body{font-family:'Instrument Sans',sans-serif;background:#1a0f1e;overflow:hidden;position:fixed;inset:0;display:flex;align-items:center;justify-content:center;color:#241629}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.3;mix-blend-mode:multiply}
+.stage{width:100%;max-width:440px;height:100dvh;max-height:820px;position:relative;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,.5);transition:background .4s}
+@media (min-width:441px){.stage{border-radius:32px;height:min(820px,calc(100dvh - 40px));margin:20px}}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:44px 32px 90px;text-align:center;opacity:0;pointer-events:none;transition:opacity .45s ease}
+.scene.on{opacity:1;pointer-events:auto}
+.disp{font-family:'Bricolage Grotesque',sans-serif;line-height:1.12;letter-spacing:-.02em;font-weight:800}
+.sweet{font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+.eyebrow{font-family:'Fraunces',serif;font-style:italic;font-size:16px;margin-bottom:16px;opacity:.85}
+.pill{display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:999px;margin-bottom:22px;border:2px solid #241629}
+.tap-hint{position:absolute;bottom:30px;left:0;right:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.55}
+.tap-hint span{display:inline-block;animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.5;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+.btn{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:15px;background:#241629;color:#FBF4EA;padding:14px 26px;border-radius:999px;border:2px solid #241629;cursor:pointer;text-decoration:none;display:inline-block;margin-top:26px;transition:transform .12s}
+.btn:active{transform:scale(.97)}
+.wm{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-size:11px;opacity:.55;letter-spacing:.06em}
+.confetti-piece{position:absolute;top:-30px;border-radius:1px;pointer-events:none}
+@keyframes fall{0%{transform:translateY(-30px) rotate(0)}100%{transform:translateY(110vh) rotate(720deg)}}
 </style>
 </head>
 <body>
+<svg class="grain" aria-hidden="true"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.11"/></feComponentTransfer></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
 
-<svg class="grain" aria-hidden="true"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.09"/></feComponentTransfer></filter><rect width="100%" height="100%" filter="url(#n)"/></svg>
+<div class="stage" id="stage">
+  <div class="scene on" id="s1">
+    <p class="eyebrow" id="e1">someone made this for you</p>
+    <p class="disp" id="coverName" style="font-size:clamp(34px,9vw,48px)">Bestie.</p>
+    <p style="margin-top:18px;font-size:14px;opacity:.7;font-style:italic">it's small. it's free. it's from the heart. mostly.</p>
+    <div class="tap-hint"><span>tap to open ↓</span></div>
+  </div>
 
-<div class="announce">Launch offer — group cards ₹99 till <em>Friendship Day, Aug 2</em> 🎉</div>
+  <div class="scene" id="s2">
+    <span class="pill" id="fromPill">from someone</span>
+    <p class="disp" id="msgLine" style="font-size:clamp(24px,6vw,31px);font-weight:700;max-width:340px"></p>
+    <div class="tap-hint"><span>one more ↓</span></div>
+  </div>
 
-<div class="wrap">
-  <nav>
-    <a class="logo" href="/">softlaunch<span>*</span></a>
-    <a class="btn ghost" href="/card/">Open a live card →</a>
-  </nav>
-
-  <header class="hero">
-    <div>
-      <span class="eyebrow">The group card that doesn't look like HR sent it</span>
-      <h1>Your whole friend group, <em>one unforgettable card.</em></h1>
-      <p class="sub">One of you starts it. Everyone drops a roast, a memory, a confession — no signup, 60 seconds each. We turn the chaos into a cinematic card they'll tap through, cry at, and screenshot. Then they judge whose roast was best.</p>
-      <div class="hero-ctas">
-        <a class="btn" href="#plans">Start a group card</a>
-        <span class="price-note">₹99 for the whole squad. No app. Lives forever.</span>
-      </div>
-    </div>
-    <div class="hero-card-zone">
-      <div class="hero-card" id="heroCard" role="button" tabindex="0" aria-label="Tap to preview a group card">
-        <span class="sticker">try me →</span>
-        <div id="hcBody" style="width:100%"></div>
-        <span class="hc-hint" id="hcHint">tap the card</span>
-      </div>
-    </div>
-  </header>
-</div>
-
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    &nbsp;6 FRIENDS <em>one card</em> ✳ ROASTS <em>rated out of 10</em> ✳ NO SIGNUP <em>for your lazy friends</em> ✳ OPENS AT MIDNIGHT <em>like it should</em> ✳ FRIENDSHIP DAY <em>aug 2, assemble the squad</em> ✳
+  <div class="scene" id="s3">
+    <p class="eyebrow">that's it. that's the card.</p>
+    <p class="sweet" id="endLine" style="font-size:clamp(24px,6vw,30px);max-width:320px">Now go tell them something nice in person, coward. 💌</p>
+    <a class="btn" href="/">Make one for your bestie — free</a>
+    <p class="wm">made free on softlaunch* · full cards from ₹49</p>
   </div>
 </div>
-
-<div class="wrap">
-  <section>
-    <div class="sec-head">
-      <span class="k">How it works</span>
-      <h2>Three roles. One card. Zero group-chat coordination.</h2>
-    </div>
-    <div class="steps">
-      <div class="step s1">
-        <p class="who">the organizer (you)</p>
-        <h3>Start it in 2 minutes</h3>
-        <p>Pick the occasion, set the roast level, drop the invite link in the group chat. You preview everything before it sends — full veto powers.</p>
-      </div>
-      <div class="step s2">
-        <p class="who">the friends</p>
-        <h3>Everyone adds a line</h3>
-        <p>They open the link, write a roast or steal one of ours, hit done. No signup, no app, no excuses. 60 seconds, even for the lazy one.</p>
-      </div>
-      <div class="step s3">
-        <p class="who">the birthday person</p>
-        <h3>They tap through & judge</h3>
-        <p>A cinematic card — roast after roast, then the sweet turn that gets them. Finale: they rate every roast and crown a winner.</p>
-      </div>
-    </div>
-  </section>
-</div>
-
-<section class="spice">
-  <div class="wrap">
-    <div class="sec-head center">
-      <span class="k">You control the heat</span>
-      <h2>Pick your roast level.</h2>
-    </div>
-    <div class="spice-box">
-      <div class="chips">
-        <button class="chip on" data-l="0">Beige 😇</button>
-        <button class="chip" data-l="1">Spicy 🌶</button>
-        <button class="chip" data-l="2">Unhinged 💀</button>
-      </div>
-      <p class="spice-line" id="spiceLine">"Happy birthday! You're aging like fine wine. Store-bought, but still."</p>
-      <p class="spice-note">The organizer sets the level. The preset lines, the prompts, everyone's expectations — all follow. Grandma-safe to ride-or-dies-only.</p>
-    </div>
-  </div>
-</section>
-
-<div class="wrap">
-  <section>
-    <div class="sec-head">
-      <span class="k">Built different</span>
-      <h2>Not a message wall. A production.</h2>
-      <p>Group cards exist — for offices. Scrolling walls of "best wishes!" from coworkers. This is the other thing.</p>
-    </div>
-    <div class="feat">
-      <div class="fcard f1">
-        <span class="fico">🏆</span>
-        <h3>The Verdict</h3>
-        <p>After the last card, they rate every friend's roast out of 10. Leaderboard gets crowned. Someone's ego doesn't survive. Screenshots guaranteed.</p>
-      </div>
-      <div class="fcard f2">
-        <span class="fico">🎬</span>
-        <h3>Cinematic, not a scroll</h3>
-        <p>Contributions become a sequenced, tap-through experience — roasts building to one sincere gut-punch. A mini-film by the whole squad.</p>
-      </div>
-      <div class="fcard f3">
-        <span class="fico">🌙</span>
-        <h3>Opens at midnight</h3>
-        <p>Schedule it to unlock at exactly 12:00 AM on the day. The way birthdays are supposed to work here.</p>
-      </div>
-      <div class="fcard f4">
-        <span class="fico">🛡</span>
-        <h3>Organizer veto</h3>
-        <p>You see every line before it sends and can delete anything. Savage stays loving. That's the rule.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="try">
-    <div class="sec-head center">
-      <span class="k">Try it right now</span>
-      <h2>Make a free mini-card in 20 seconds.</h2>
-      <p>No signup. No payment. Type, get a link, drop it in their DMs. It carries our little watermark — that's the deal.</p>
-    </div>
-    <div class="maker">
-      <label>Their name
-        <input id="fTo" maxlength="20" placeholder="Riya">
-      </label>
-      <label>Your name
-        <input id="fFrom" maxlength="20" placeholder="you, obviously">
-      </label>
-      <label>Your line
-        <textarea id="fMsg" rows="3" maxlength="140" placeholder="Write a roast, a soft one, or steal ours…"></textarea>
-      </label>
-      <div class="mrow">
-        <button class="steal" id="stealBtn" type="button">steal a line 🎲</button>
-        <div class="vibes" id="vibes" title="pick a vibe">
-          <div class="vibe on" data-v="0" style="background:var(--marigold)"></div>
-          <div class="vibe" data-v="1" style="background:var(--rose)"></div>
-          <div class="vibe" data-v="2" style="background:var(--mint)"></div>
-          <div class="vibe" data-v="3" style="background:#B9A7E6"></div>
-        </div>
-      </div>
-      <button class="btn" id="makeBtn" type="button" style="width:100%">Create my free card →</button>
-      <div class="linkbox" id="linkBox" hidden>
-        <p style="font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;margin-bottom:10px">Their card is live. Send it:</p>
-        <input id="linkOut" readonly>
-        <div class="linkrow">
-          <button class="btn" id="copyBtn" type="button">Copy link</button>
-          <a class="btn ghost" id="waBtn" target="_blank" rel="noopener">Send on WhatsApp</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="plans">
-    <div class="sec-head center">
-      <span class="k">Pricing</span>
-      <h2>One of you pays. All of you take credit.</h2>
-    </div>
-    <div class="plans">
-      <div class="plan">
-        <h3>Mini-card</h3>
-        <div class="pp">₹0 <small>forever</small></div>
-        <ul>
-          <li><strong>Solo</strong> — one message, one design</li>
-          <li>Small "made on softlaunch*" tag</li>
-          <li>Link never expires</li>
-        </ul>
-      </div>
-      <div class="plan featured">
-        <span class="badge">the main event</span>
-        <h3>The Group Card</h3>
-        <div class="pp"><s>₹149</s>₹99 <small>launch price</small></div>
-        <ul>
-          <li><strong>Unlimited friends</strong>, no signup for them</li>
-          <li>The Verdict leaderboard finale</li>
-          <li>Roast levels + midnight unlock</li>
-          <li><strong>No watermark</strong> — their moment</li>
-        </ul>
-      </div>
-      <div class="plan">
-        <h3>Solo card</h3>
-        <div class="pp">₹49 <small>per card</small></div>
-        <ul>
-          <li><strong>Just you</strong> — full multi-screen arc</li>
-          <li>Roast-to-sweet-turn sequence</li>
-          <li>No watermark</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="pricing">
-    <h2>The group chat has jokes. <em>Give them a stage.</em></h2>
-    <p>One-time payment, whole squad plays free. No app for anyone, ever. Launch price runs till Friendship Day, Aug 2.</p>
-    <a class="btn" href="#plans">Start your group card</a>
-  </section>
-</div>
-
-<footer>
-  <div class="wrap foot">
-    <span><strong style="font-family:'Bricolage Grotesque',sans-serif">softlaunch*</strong> — your whole friend group, one unforgettable card.</span>
-    <span>Made with mischief in Jaipur · <a href="#">Instagram</a> · <a href="#">Contact</a></span>
-  </div>
-</footer>
 
 <script>
-const scenes = [
-  {tag:'6 friends contributed', line:'Ananya, your whole squad made you something.', bg:'var(--marigold-paper)', tagBg:'var(--marigold)', color:'var(--marigold-deep)'},
-  {tag:"Priya's roast", line:'Happy birthday to someone who has never once been on time. Not once. We checked.', bg:'var(--marigold-paper)', tagBg:'var(--marigold)', color:'var(--marigold-deep)'},
-  {tag:"Rohan's roast", line:'Another year older and you still argue with the delivery ETA like it owes you money.', bg:'var(--lilac-paper)', tagBg:'#B9A7E6', color:'var(--lilac-deep)'},
-  {tag:"Aisha's roast", line:"You're the mom friend. Congrats on turning 47.", bg:'var(--mint-paper)', tagBg:'var(--mint)', color:'var(--mint-deep)'},
-  {tag:'okay, real talk —', line:"We'd all be a little lost without you. Happy birthday, Ananya.", bg:'var(--rose-paper)', tagBg:'var(--rose)', color:'var(--rose-deep)', sweet:true},
-  {verdict:true, bg:'var(--marigold-paper)'}
+const qp = new URLSearchParams(location.search);
+const clean = (s, n) => (s||'').replace(/[<>]/g,'').trim().slice(0, n);
+const to = clean(qp.get('to'), 20) || 'Bestie';
+const from = clean(qp.get('from'), 20) || 'someone';
+const msg = clean(qp.get('m'), 140) || "You're getting a card because words are hard. Happy everything.";
+const v = Math.min(3, Math.max(0, parseInt(qp.get('v'))||0));
+
+const vibes = [
+  {bg:'#FCEDD3', deep:'#7a4c08', pill:'#F2A93B'},
+  {bg:'#FCE3EE', deep:'#8f1f4c', pill:'#E84D8A'},
+  {bg:'#DCF3E9', deep:'#0e4f38', pill:'#5BC49A'},
+  {bg:'#EDE6FA', deep:'#3f2d6e', pill:'#B9A7E6'}
 ];
-let si = 0;
-const hc = document.getElementById('heroCard');
-const body = document.getElementById('hcBody');
-const hint = document.getElementById('hcHint');
-function render(){
-  const s = scenes[si];
-  hc.style.background = s.bg;
-  if(s.verdict){
-    body.innerHTML = '<span class="hc-tag" style="background:var(--marigold);color:var(--ink)">the verdict 🏆</span>'
-      + '<div class="vrow gold"><span>Priya</span><span class="sc">9.5/10</span></div>'
-      + '<div class="vrow"><span>Aisha</span><span class="sc">8/10</span></div>'
-      + '<div class="vrow"><span>Rohan</span><span class="sc" style="background:var(--rose-paper)">tried</span></div>';
-    hint.textContent = 'tap to restart';
-  } else {
-    const fam = s.sweet ? "font-family:'Fraunces',serif;font-style:italic;font-weight:500;" : '';
-    const tc = s.sweet ? 'color:#fff;' : 'color:var(--ink);';
-    body.innerHTML = '<span class="hc-tag" style="background:'+s.tagBg+';'+tc+'">'+s.tag+'</span>'
-      + '<p class="hc-line" style="color:'+s.color+';'+fam+'">'+s.line+'</p>';
-    hint.textContent = si === 0 ? 'tap the card' : 'keep tapping';
+const vb = vibes[v];
+const stage = document.getElementById('stage');
+stage.style.background = vb.bg;
+document.body.style.background = '#1a0f1e';
+['e1','coverName','msgLine','endLine'].forEach(id=>document.getElementById(id).style.color = vb.deep);
+const pretty = to.charAt(0).toUpperCase()+to.slice(1);
+document.getElementById('coverName').textContent = pretty + '.';
+document.getElementById('fromPill').textContent = 'from ' + from;
+document.getElementById('fromPill').style.background = vb.pill;
+document.getElementById('msgLine').textContent = msg;
+document.title = pretty + ', you got a card 💌';
+
+const scenes = ['s1','s2','s3'].map(id=>document.getElementById(id));
+let i = 0;
+stage.addEventListener('click', e=>{
+  if(e.target.closest('a,button')) return;
+  if(i >= scenes.length-1) return;
+  scenes[i].classList.remove('on');
+  i++;
+  scenes[i].classList.add('on');
+  if(i === scenes.length-1) confetti();
+});
+function confetti(){
+  const colors = ['#E84D8A','#F2A93B','#5BC49A','#B9A7E6','#F0997B'];
+  for(let k=0;k<40;k++){
+    const c = document.createElement('div');
+    c.className = 'confetti-piece';
+    const sz = 6+Math.random()*7;
+    c.style.cssText = 'left:'+(Math.random()*100)+'%;width:'+sz+'px;height:'+(sz*.55)+'px;background:'+colors[k%5]+';animation:fall '+(2.4+Math.random()*2)+'s linear '+(Math.random()*.9)+'s forwards';
+    stage.appendChild(c);
+    setTimeout(()=>c.remove(), 5500);
   }
 }
-function advance(){ si = (si+1)%scenes.length; render(); }
-hc.addEventListener('click', advance);
-hc.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' '){e.preventDefault();advance();} });
-render();
-
-const spiceLines = [
-  '"Happy birthday! You\'re aging like fine wine. Store-bought, but still."',
-  '"Another year wiser? Bold assumption."',
-  '"You\'re officially closer to 30 than 20. The group has voted. There is no appeal."'
-];
-document.querySelectorAll('.chip').forEach(ch=>{
-  ch.addEventListener('click', ()=>{
-    document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));
-    ch.classList.add('on');
-    document.getElementById('spiceLine').textContent = spiceLines[+ch.dataset.l];
-  });
-const stealLines = [
-  "Happy birthday to someone who still replies \"lol\" with a completely straight face.",
-  "Another year wiser? Bold assumption.",
-  "Your camera roll is 3,000 screenshots and 4 real photos. Get help.",
-  "You've been 'about to start gym' for three birthdays now.",
-  "Half my personality is stolen from you and you can't do anything about it.",
-  "No jokes for this one: you make my life so much lighter. Don't go anywhere."
-];
-let stealI = 0, vibeV = 0;
-document.getElementById('stealBtn').addEventListener('click', ()=>{
-  document.getElementById('fMsg').value = stealLines[stealI % stealLines.length];
-  stealI++;
-});
-document.querySelectorAll('.vibe').forEach(v=>{
-  v.addEventListener('click', ()=>{
-    document.querySelectorAll('.vibe').forEach(x=>x.classList.remove('on'));
-    v.classList.add('on');
-    vibeV = +v.dataset.v;
-  });
-});
-document.getElementById('makeBtn').addEventListener('click', ()=>{
-  const to = document.getElementById('fTo').value.trim() || 'Bestie';
-  const from = document.getElementById('fFrom').value.trim() || 'someone';
-  const m = document.getElementById('fMsg').value.trim() || stealLines[0];
-  const url = location.origin + '/mini/?to=' + encodeURIComponent(to) + '&from=' + encodeURIComponent(from) + '&m=' + encodeURIComponent(m) + '&v=' + vibeV;
-  document.getElementById('linkOut').value = url;
-  document.getElementById('waBtn').href = 'https://wa.me/?text=' + encodeURIComponent('you got a card 💌 ' + url);
-  document.getElementById('linkBox').hidden = false;
-  document.getElementById('linkOut').scrollIntoView({behavior:'smooth', block:'center'});
-});
-document.getElementById('copyBtn').addEventListener('click', ()=>{
-  const out = document.getElementById('linkOut');
-  out.select();
-  navigator.clipboard.writeText(out.value).then(()=>{
-    document.getElementById('copyBtn').textContent = 'Copied ✓';
-    setTimeout(()=>document.getElementById('copyBtn').textContent = 'Copy link', 1800);
-  }).catch(()=>{ document.execCommand('copy'); });
-});
 </script>
 </body>
 </html>
